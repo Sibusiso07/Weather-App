@@ -1,0 +1,101 @@
+.App {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  h1 {
+    color: #007BFF;
+  }
+  
+  .weather-container {
+    width: 80%;
+    margin: 0 auto; 
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .weatherInfo {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .weatherInfo p {
+    margin: 5px 0;
+    flex: 1; 
+  }
+  
+  .sunrise-sunset {
+    display: flex;
+    justify-content: flex-start; 
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+
+  .sevenDay-container {
+    width: 80%;
+    margin: 20px auto;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed;
+  }
+  
+  .weather-table thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed; 
+  }
+  
+  .weather-table th, .weather-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+  
+  .weather-table th {
+    background-color: #007BFF;
+    color: white;
+    position: sticky;
+    top: 0; 
+  }
+  
+  .weather-table tbody {
+    display: block;
+    height: 340px; 
+    overflow-y: auto; 
+  }
+  
+  .weather-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed; 
+  }
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  margin-left: 0;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+}
