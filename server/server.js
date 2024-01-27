@@ -10,13 +10,20 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-const API_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Sandton?unitGroup=metric&key="
-const API_KEY = process.env.API_KEY;
+const API_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
+const API_KEY = "?unitGroup=metric&key=" + process.env.API_KEY;
 
 
-app.get("/", async (req, res) => {
+app.post("/", async (req, res) => {
     try {
-        const response = await axios.get(API_URL + API_KEY);
+        const { lat, lon } = req.body;
+        let location = null;
+        if (lat && lon) {
+            location = `${lat},${lon}`;
+        } else {
+            location = "Sandton";
+        }
+        const response = await axios.get(API_URL + location + API_KEY);
         res.json(response.data); 
     } catch (error) {
         console.error("Failed to connect to API: ", error);

@@ -7,26 +7,34 @@ function App() {
   const getGeoLocation = () => {
     return new Promise((resolve, reject) => {
       try {
-        navigator.geolocation.getCurrentPosition((position) => {
-          resolve({latitude: position.coords.latitude,
-                  longitude: position.coords.longitude});
-          console.log("Latitude:", position.coords.latitude);
-          console.log("Longitude:", position.coords.longitude);
-        }, (error) => {
-          reject("Error fetching location", error);
-        });
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                console.log("Latitude:", position.coords.latitude);
+                console.log("Longitude:", position.coords.longitude);
+
+                resolve({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+            },
+            (error) => {
+                reject("Error fetching location: " + error.message);
+            }
+        );
       } catch (error) {
-          reject("Error fetching location", error);
+          reject("Error fetching location: " + error.message);
       }
     });
   };
 
   getGeoLocation();
 
-  const getWeather = async () => {
+  const getWeather = async (latitude, longitude) => {
     try {
       const results = await fetch("http://localhost:3001/", {
-        method: "GET",
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ lat: latitude, lon: longitude })
       });
       const response = await results.json();
       console.log(response);
