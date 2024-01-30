@@ -9,12 +9,11 @@ function App() {
       try {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                console.log("Latitude:", position.coords.latitude);
-                console.log("Longitude:", position.coords.longitude);
-
+                console.log("Latitude:", position.coords.latitude.toFixed(4));
+                console.log("Longitude:", position.coords.longitude.toFixed(4));
                 resolve({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
+                    latitude: position.coords.latitude.toFixed(4),
+                    longitude: position.coords.longitude.toFixed(4)
                 });
             },
             (error) => {
